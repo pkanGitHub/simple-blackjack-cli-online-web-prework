@@ -35,16 +35,22 @@ sum = deal_card + deal_card
   return sum
 end
 
-def hit?(get_user_input)
+def hit?(card_total)
   # code hit? here
   prompt_user
-  get_user_input
-
+  input = get_user_input
+  if input == 's'
+    return card_total
+  elsif input == 'h'
+    return deal_card + card_total
+  end
 end
 
 def invalid_command
   # code invalid_command here
-
+  if hit? != 's' || hit? != 'h'
+    puts "invalid"
+  end
 end
 
 #####################################################
@@ -53,4 +59,11 @@ end
 
 def runner
   # code runner here
+  welcome
+  card_total = initial_round
+  while card_total < 21
+  card_total = hit?(card_total)
+  display_card_total(card_total)
+  end
+  end_game(card_total)
 end
