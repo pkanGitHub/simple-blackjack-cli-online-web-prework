@@ -35,7 +35,7 @@ sum = deal_card + deal_card
   return sum
 end
 
-def hit?
+def hit?(get_user_input)
   # code hit? here
   prompt_user
   get_user_input
